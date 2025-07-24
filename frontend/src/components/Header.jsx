@@ -1,3 +1,4 @@
+import { use } from "react"
 
 const Header = ({ username, onLogout }) => {
   return (
@@ -13,7 +14,7 @@ const Header = ({ username, onLogout }) => {
         <div className="header-right">
          
           <div className="user-menu">
-           
+           <h1 >{username}</h1>
             <button className="logout-btn" onClick={onLogout}>
               <span className="logout-icon">→</span>
               Logout

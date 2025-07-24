@@ -1,12 +1,13 @@
 
 const BankCard = ({ account, index, isActive, onClick, style }) => {
-  const maskAccountNumber = (number) => {
-    if (!number || number.length < 8) {
-      return "•••• •••• •••• ••••";
-    }
-    return number.slice(0, 4) + " •••• •••• " + number.slice(-4);
-  };
 
+  const formatAccountNumber = (number) => {
+    if (!number) {
+      return "";
+    }
+  
+    return number.match(/.{1,4}/g)?.join(" ") || number;
+  };
   return (
     <div
       className={`bank-card ${isActive ? "active" : ""}`}
@@ -22,7 +23,7 @@ const BankCard = ({ account, index, isActive, onClick, style }) => {
         <div className="card-type">DEBIT</div>
       </div>
 
-      <div className="card-number">{maskAccountNumber(account.accountNumber)}</div>
+      <div className="card-number">{formatAccountNumber(account.accountNumber)}</div>
 
       <div className="card-footer">
         <div className="card-info">

@@ -125,7 +125,7 @@ const AddAccountModal = ({ isOpen, onClose, onSubmit, editingAccount, loading })
                 type="text"
                 value={formData.accountHolderName}
                 onChange={(e) => setFormData({ ...formData, accountHolderName: e.target.value })}
-                placeholder="e.g., John Doe"
+                placeholder="e.g., Arpit"
                 className={errors.accountHolderName ? "error" : ""}
               />
               {errors.accountHolderName && <span className="error-text">{errors.accountHolderName}</span>}

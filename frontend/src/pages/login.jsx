@@ -139,11 +139,15 @@ function Login() {
             setMessageType('success');
             setLoggedInUser(response.data);
             localStorage.setItem('userInfo', JSON.stringify(response.data));
-
+console.log(response.data)
             setEmail('');
             setPassword('');
-
-            navigate('/dashboard');
+        if(response.data.isAdmin){
+            navigate('/admin');
+        }
+        else{
+            navigate('/dashboard')
+        }
         } catch (error) {
             setMessage(error.response?.data?.message || 'Invalid email or password.');
             setMessageType('error');

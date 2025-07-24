@@ -3,6 +3,8 @@ import {useRoutes} from "react-router-dom"
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import Register from './pages/signup';
+
+import AdminDashboard from './pages/admin';
 const App = () => {
 
   const routeArray = [
@@ -17,7 +19,12 @@ const App = () => {
   {
        path:"/signup",
        element:<Register/>
-  }
+  },
+  {
+       path:"/admin",
+       element:<AdminDashboard/>
+  },
+  
 ]
 const routesElement = useRoutes(routeArray);
   return (
