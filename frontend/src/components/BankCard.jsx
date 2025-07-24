@@ -1,4 +1,3 @@
-"use client"
 
 const BankCard = ({ account, index, isActive, onClick, style }) => {
   const maskAccountNumber = (number) => {

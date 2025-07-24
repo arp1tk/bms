@@ -1,4 +1,3 @@
-"use client"
 
 const Header = ({ username, onLogout }) => {
   return (

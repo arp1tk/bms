@@ -1,4 +1,5 @@
 const BankAccount = require("../models/bankAccModel");
+const User = require("../models/userModel");
 
 
 const addBankAccount = async (req, res) => {
@@ -74,10 +75,51 @@ const deleteBankAccount = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+const getAllBankAccounts = async (req, res) => {
+  try {
+    const accounts = await BankAccount.find().populate("user", "name email");
+
+    res.status(200).json({
+      message: "All bank accounts fetched successfully",
+      accounts,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+const searchBankAccounts = async (req, res) => {
+  try {
+    const { bankName, ifscCode, accountHolderName, branchName, username } = req.query;
+    let query = {};
+
+    if (bankName) query.bankName = new RegExp(bankName, "i");
+    if (ifscCode) query.ifscCode = new RegExp(ifscCode, "i");
+    if (accountHolderName) query.accountHolderName = new RegExp(accountHolderName, "i");
+    if (branchName) query.branchName = new RegExp(branchName, "i");
+
+   
+    if (username) {
+      const user = await User.findOne({ name: new RegExp(username, "i") });
+      if (user) query.user = user._id;
+      else return res.status(404).json({ message: "User not found with given username" });
+    }
+
+    const accounts = await BankAccount.find(query).populate("user", "name email");
+
+    res.status(200).json({
+      message: "Filtered bank accounts fetched successfully",
+      accounts,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 module.exports = {
   addBankAccount,
   getBankAccounts,
   updateBankAccount,
   deleteBankAccount,
+  getAllBankAccounts,
+  searchBankAccounts
 };

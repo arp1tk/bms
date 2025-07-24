@@ -1,4 +1,3 @@
-"use client"
 
 const CardDetailsModal = ({ account, isOpen, onClose, onEdit, onDelete }) => {
   if (!isOpen || !account) return null
