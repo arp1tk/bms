@@ -118,15 +118,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-     <div style={{
-        display: "flex"
-     }}>
-        <h1>Bank Management System</h1>
-         <button className="logout-btn" onClick={handleLogout}>
-              <span className="logout-icon">→</span>
-              Logout
-            </button>
-     </div>
+    <Header username={username} onLogout={handleLogout} />
+
 
       <main className="main-content">
         <div className="welcome-section">
