@@ -5,7 +5,7 @@ import Header from "../components/Header"
 import CardCarousel from "../components/CardCarousel"
 import CardDetailsModal from "../components/CardDetailsModal"
 import AddAccountModal from "../components/AddAccountModal"
-import "./Dashboard.css"
+import "./dashboard.css"
 
 const Dashboard = () => {
   const [bankAccounts, setBankAccounts] = useState([])
