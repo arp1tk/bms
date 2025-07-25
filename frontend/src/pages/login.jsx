@@ -120,7 +120,7 @@ function Login() {
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
     const [loggedInUser, setLoggedInUser] = useState(null);
-
+    const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -128,9 +128,9 @@ function Login() {
         setMessage('');
         setMessageType('');
         setLoggedInUser(null);
-
+        setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/users/login', {
+            const response = await axios.post('https://bms-t46x.onrender.com/api/users/login', {
                 email,
                 password,
             });
@@ -151,6 +151,9 @@ console.log(response.data)
         } catch (error) {
             setMessage(error.response?.data?.message || 'Invalid email or password.');
             setMessageType('error');
+        }
+        finally{
+            setLoading(false)
         }
     };
 
@@ -190,7 +193,7 @@ console.log(response.data)
                     onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#0056b3'}
                     onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#007bff'}
                 >
-                    Log In
+                   {loading? 'loging in...' : 'Log in'}
                 </button>
             </form>
 
