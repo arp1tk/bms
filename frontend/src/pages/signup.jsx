@@ -110,7 +110,7 @@ function Register() {
         setMessageType('');
 
         try {
-            const response = await axios.post('http://localhost:5000/api/users', {
+            const response = await axios.post('https://bms-t46x.onrender.com/api/users', {
                 name,
                 email,
                 password,

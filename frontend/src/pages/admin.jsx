@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   const fetchAllAccounts = async () => {
     try {
       setLoading(true)
-      const response = await fetch("http://localhost:5000/api/users/all")
+      const response = await fetch("https://bms-t46x.onrender.com/api/users/all")
       if (response.ok) {
         const data = await response.json()
         setAllAccounts(data.accounts)
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
       const queryParams = new URLSearchParams()
       queryParams.append(searchBy, searchQuery.trim())
 
-      const response = await fetch(`http://localhost:5000/api/users/search?${queryParams.toString()}`)
+      const response = await fetch(`https://bms-t46x.onrender.com/api/users/search?${queryParams.toString()}`)
       if (response.ok) {
         const data = await response.json()
         setFilteredAccounts(data.accounts)

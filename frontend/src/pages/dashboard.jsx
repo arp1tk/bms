@@ -30,7 +30,7 @@ const Dashboard = () => {
       const userId = userInfoString._id;
       if (!userId) return
 
-      const response = await fetch(`http://localhost:5000/api/users/getBank?userId=${userId}`)
+      const response = await fetch(`https://bms-t46x.onrender.com/api/users/getBank?userId=${userId}`)
       if (response.ok) {
         const data = await response.json()
         setBankAccounts(data)
@@ -62,7 +62,7 @@ const Dashboard = () => {
     if (window.confirm("Are you sure you want to delete this account?")) {
       try {
         setLoading(true)
-        const response = await fetch(`http://localhost:5000/api/users/deleteBank/${accountId}`, {
+        const response = await fetch(`https://bms-t46x.onrender.com/api/users/deleteBank/${accountId}`, {
           method: "DELETE",
         })
 
@@ -86,13 +86,13 @@ const Dashboard = () => {
 
       let response
       if (editingAccount) {
-        response = await fetch(`http://localhost:5000/api/users/updateBank/${editingAccount._id}`, {
+        response = await fetch(`https://bms-t46x.onrender.com/api/users/updateBank/${editingAccount._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         })
       } else {
-        response = await fetch("http://localhost:5000/api/users/addBank", {
+        response = await fetch("https://bms-t46x.onrender.com/api/users/addBank", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
