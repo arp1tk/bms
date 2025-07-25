@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react"
-import "./AdminDashboard.css"
+import "./adminDashboard.css"
 import Header from "../components/Header"
 
 const AdminDashboard = () => {
