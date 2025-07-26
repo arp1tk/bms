@@ -77,7 +77,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear()
-    window.location.href = "/login"
+    window.location.href = "/"
   }
 
   const formatDate = (dateString) => {
